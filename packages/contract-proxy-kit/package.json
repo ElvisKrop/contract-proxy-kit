@@ -1,6 +1,6 @@
 {
-  "name": "contract-proxy-kit",
-  "version": "3.0.0",
+  "name": "contract-proxy-kit-debug",
+  "version": "0.0.1",
   "description": "Enable batched transactions and contract account interactions using a unique deterministic Gnosis Safe.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -32,17 +32,12 @@
     "transaction",
     "wallet"
   ],
-  "author": "Gnosis (https://gnosis.io)",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/gnosis/contract-proxy-kit/issues"
-  },
   "files": [
     "contracts",
     "lib",
     "src"
   ],
-  "homepage": "https://github.com/gnosis/contract-proxy-kit#readme",
   "dependencies": {
     "@gnosis.pm/safe-apps-sdk": "^1.1.0",
     "@truffle/contract": "^4.3.25",
