@@ -1,5 +1,5 @@
 {
-  "name": "contract-proxy-kit-debug",
+  "name": "cpk-debug",
   "version": "0.0.1",
   "description": "Enable batched transactions and contract account interactions using a unique deterministic Gnosis Safe.",
   "main": "lib/cjs/index.js",
@@ -14,10 +14,6 @@
     "format": "prettier-eslint --write $PWD/'src/**/*.{js,ts,json}' $PWD/'test/**/*.{js,ts,json}'",
     "build": "tsc && tsc -p tsconfig.cjs.json && yarn typedoc src/index.ts",
     "publish-docs": "yarn build && surge --project=docs --domain=https://cpk-docs.surge.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gnosis/contract-proxy-kit.git"
   },
   "keywords": [
     "gnosis",
