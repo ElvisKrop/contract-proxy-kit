@@ -84,20 +84,20 @@ class CpkTransactionManager implements TransactionManager {
           proxyFactory
         )
 
-    const { success, gasLimit } = await this.findGasLimit(ethLibAdapter, txObj, sendOptions)
-    sendOptions.gas = gasLimit
-    const isSingleTx = transactions.length === 1
+    const { gasLimit } = await this.findGasLimit(ethLibAdapter, txObj, sendOptions)
+    sendOptions.gas = gasLimit * 1.5
+    // const isSingleTx = transactions.length === 1
 
-    if (!success) {
-      throw await this.makeTransactionError(
-        ethLibAdapter,
-        safeExecTxParams,
-        safeContract.address,
-        gasLimit,
-        isDeployed,
-        isSingleTx
-      )
-    }
+    // if (!success) {
+    //   throw await this.makeTransactionError(
+    //     ethLibAdapter,
+    //     safeExecTxParams,
+    //     safeContract.address,
+    //     gasLimit,
+    //     isDeployed,
+    //     isSingleTx
+    //   )
+    // }
 
     const { contract, methodName, params } = txObj
 
