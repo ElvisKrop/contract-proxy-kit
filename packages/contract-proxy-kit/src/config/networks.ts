@@ -40,41 +40,58 @@ const masterCopyAddressVersions: MasterCopyAddressVersion[] = [
   }
 ]
 
+const multiSendAddress = '0x8D29bE29923b68abfDD21e541b9374737B49cdAD'
+const fallbackHandlerAddress = '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+
 export const defaultNetworks: NormalizedNetworksConfig = {
   // mainnet
   1: {
     masterCopyAddressVersions,
     proxyFactoryAddress: '0x0fB4340432e56c014fa96286de17222822a9281b',
-    multiSendAddress: '0x8D29bE29923b68abfDD21e541b9374737B49cdAD',
-    fallbackHandlerAddress: '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+    multiSendAddress,
+    fallbackHandlerAddress
   },
   // rinkeby
   4: {
     masterCopyAddressVersions,
     proxyFactoryAddress: '0x336c19296d3989e9e0c2561ef21c964068657c38',
-    multiSendAddress: '0x8D29bE29923b68abfDD21e541b9374737B49cdAD',
-    fallbackHandlerAddress: '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+    multiSendAddress,
+    fallbackHandlerAddress
   },
   // goerli
   5: {
     masterCopyAddressVersions,
     proxyFactoryAddress: '0xfC7577774887aAE7bAcdf0Fc8ce041DA0b3200f7',
-    multiSendAddress: '0x8D29bE29923b68abfDD21e541b9374737B49cdAD',
-    fallbackHandlerAddress: '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+    multiSendAddress,
+    fallbackHandlerAddress
   },
   // kovan
   42: {
     masterCopyAddressVersions,
     proxyFactoryAddress: '0xfC7577774887aAE7bAcdf0Fc8ce041DA0b3200f7',
-    multiSendAddress: '0x8D29bE29923b68abfDD21e541b9374737B49cdAD',
-    fallbackHandlerAddress: '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+    multiSendAddress,
+    fallbackHandlerAddress
   },
   // xdai
   100: {
     masterCopyAddressVersions,
     proxyFactoryAddress: '0xfC7577774887aAE7bAcdf0Fc8ce041DA0b3200f7',
-    multiSendAddress: '0x8D29bE29923b68abfDD21e541b9374737B49cdAD',
-    fallbackHandlerAddress: '0xd5D82B6aDDc9027B22dCA772Aa68D5d74cdBdF44'
+    multiSendAddress,
+    fallbackHandlerAddress
+  },
+  // matic
+  137: {
+    masterCopyAddressVersions,
+    proxyFactoryAddress: '0x1B5CFC0C4Ce241C9F7De29Ed60fEeA1a614A3457',
+    multiSendAddress,
+    fallbackHandlerAddress
+  },
+  // mumbai
+  80001: {
+    masterCopyAddressVersions,
+    proxyFactoryAddress: '0x7983d49B5714b30eaC2B991ae011004992B9173c',
+    multiSendAddress,
+    fallbackHandlerAddress
   }
 }
 
