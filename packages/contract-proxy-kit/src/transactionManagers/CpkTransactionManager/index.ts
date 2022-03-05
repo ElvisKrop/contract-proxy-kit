@@ -85,7 +85,7 @@ class CpkTransactionManager implements TransactionManager {
         )
 
     const { gasLimit } = await this.findGasLimit(ethLibAdapter, txObj, sendOptions)
-    sendOptions.gas = gasLimit * 1.5
+    sendOptions.gas = gasLimit
     // const isSingleTx = transactions.length === 1
 
     // if (!success) {
