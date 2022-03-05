@@ -488,7 +488,7 @@ class CPK {
       to: this.#contractManager?.multiSend.address,
       value: '0',
       data: this.encodeMultiSendCallData(transactions),
-      operation: CPK.DelegateCall
+      operation: CPK.Call
     }
   }
 }
