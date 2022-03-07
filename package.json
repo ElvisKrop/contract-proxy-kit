@@ -10,6 +10,7 @@
     ]
   },
   "scripts": {
+    "cpk:patch-version": "lerna run patch-version --scope cpk-debug --stream",
     "cpk:build": "lerna run build --scope cpk-debug --stream",
     "cpk:test": "FORCE_COLOR=1 lerna run test --scope contract-proxy-kit --stream",
     "cpk:publish-docs": "lerna run publish-docs --scope contract-proxy-kit --stream",
