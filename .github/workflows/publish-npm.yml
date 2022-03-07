@@ -1,15 +1,15 @@
 name: Publish
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
-  npm-publish:
+  increase-package-version:
+    name: Increase package version automatically
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: setup git config
+      - name: Setup git configuration
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "GitHub Actions Bot"
@@ -21,6 +21,11 @@ jobs:
           yarn cpk:patch-version
           git push origin master
 
+  npm-publish:
+    needs: increase-package-version
+    name: Publish to the NPM registry
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout the code
         uses: actions/checkout@v2
 
