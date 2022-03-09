@@ -23,8 +23,8 @@ jobs:
     name: Publish ${{ needs.increase-package-version.outputs.pkg-version }} to the NPM registry
     runs-on: ubuntu-latest
     steps:
-#      - name: Checkout the code
-#        uses: actions/checkout@v2
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
       - name: Get yarn cache
         uses: actions/cache@v2
