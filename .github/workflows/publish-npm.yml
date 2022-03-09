@@ -1,5 +1,16 @@
 name: Publish
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      version-type:
+        type: choice
+        description: What version do you want to increase?
+        required: true
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   increase-package-version:
@@ -17,11 +28,12 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
+      - run: |
+          cd ./packages/contract-proxy-kit
+          yarn version --${{github.event.inputs.version-type}}
+
       - name: Push commit
-        run: |
-          # Stage the file, commit and push
-          yarn cpk:patch-version
-          git push origin master
+        run: git push origin master
 
       - name: Get the package version
         id: pkg-version

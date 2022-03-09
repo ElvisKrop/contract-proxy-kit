@@ -5,7 +5,6 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "scripts": {
-    "patch-version": "yarn version --patch",
     "generate-types": "typechain --target=truffle-v5 './build/contracts/*.json'",
     "migrate": "tsc -p ./tsconfig.migrate.json --outDir ./migrations && truffle migrate --network local",
     "test-ts": "TS_NODE_PROJECT='./tsconfig.cjs.json' nyc mocha -t 20000 -r ts-node/register -r jsdom-global/register --file ./mocha/setup.ts ./test/contract-proxy-kit.ts --exit",
