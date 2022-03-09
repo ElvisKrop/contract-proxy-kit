@@ -1,0 +1,43 @@
+name: Package version
+
+on:
+  workflow_call:
+    outputs:
+      pkg-version:
+        value: ${{ jobs.increase-package-version.outputs.pkg-version }}
+    inputs:
+      version-type:
+        default: patch
+        required: false
+        type: string
+        description: "Value can be: patch, minor or major"
+
+jobs:
+  increase-package-version:
+    name: Increase package version automatically
+    runs-on: ubuntu-latest
+    outputs:
+      pkg-version: ${{ steps.pkg-version.outputs.current-version }}
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Setup git configuration
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - run: |
+          cd ./packages/contract-proxy-kit
+          yarn version --${{ inputs.version-type }}
+          cd ../..
+
+      - name: Push commit
+        run: git push origin master
+
+      - name: Get the package version
+        id: pkg-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: packages/contract-proxy-kit

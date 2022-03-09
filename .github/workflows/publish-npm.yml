@@ -14,32 +14,9 @@ on:
 
 jobs:
   increase-package-version:
-    name: Increase package version automatically
-    runs-on: ubuntu-latest
-    outputs:
-      pkg-version: ${{ steps.pkg-version.outputs.current-version }}
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-
-      - name: Setup git configuration
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-
-      - run: |
-          cd ./packages/contract-proxy-kit
-          yarn version --${{ github.event.inputs.version-type }}
-
-      - name: Push commit
-        run: git push origin master
-
-      - name: Get the package version
-        id: pkg-version
-        uses: martinbeentjes/npm-get-version-action@master
-        with:
-          path: packages/contract-proxy-kit
+    uses: ElvisKrop/contract-proxy-kit/.github/workflows/increase-package-version.yml@master
+    with:
+      version-type: ${{ github.event.inputs.version-type }}
 
   npm-publish:
     needs: increase-package-version
@@ -63,6 +40,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
       - name: Build NPM Package
