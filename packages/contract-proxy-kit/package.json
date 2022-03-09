@@ -1,6 +1,6 @@
 {
   "name": "cpk-debug",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "description": "Enable batched transactions and contract account interactions using a unique deterministic Gnosis Safe.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
