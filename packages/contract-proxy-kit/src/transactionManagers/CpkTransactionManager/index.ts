@@ -102,8 +102,10 @@ class CpkTransactionManager implements TransactionManager {
     }
 
     const { contract, methodName, params } = txObj
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { gas, ...rest } = sendOptions
 
-    return contract.send(methodName, params, sendOptions)
+    return contract.send(methodName, params, rest)
   }
 
   private async execTxsWhileConnectedToSafe(
