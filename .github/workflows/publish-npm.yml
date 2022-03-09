@@ -5,6 +5,8 @@ jobs:
   increase-package-version:
     name: Increase package version automatically
     runs-on: ubuntu-latest
+    outputs:
+      pkg-version: ${{ steps.pkg-version.outputs.current-version }}
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -21,9 +23,13 @@ jobs:
           yarn cpk:patch-version
           git push origin master
 
+      - name: Get the package version
+        id: pkg-version
+        uses: martinbeentjes/npm-get-version-action@master
+
   npm-publish:
     needs: increase-package-version
-    name: Publish to the NPM registry
+    name: Publish ${{ needs.increase-package-version.outputs.pkg-version }} to the NPM registry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
