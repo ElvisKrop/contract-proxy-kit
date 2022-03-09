@@ -28,7 +28,8 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
-      - run: |
+      - name: Increase version
+        run: |
           cd ./packages/contract-proxy-kit
           yarn version --${{ inputs.version-type }}
           cd ../..
