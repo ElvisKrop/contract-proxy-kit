@@ -26,6 +26,8 @@ jobs:
       - name: Get the package version
         id: pkg-version
         uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: packages/contract-proxy-kit
 
   npm-publish:
     needs: increase-package-version
