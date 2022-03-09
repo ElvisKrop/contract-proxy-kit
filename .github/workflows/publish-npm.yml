@@ -30,7 +30,7 @@ jobs:
 
       - run: |
           cd ./packages/contract-proxy-kit
-          yarn version --${{github.event.inputs.version-type}}
+          yarn version --${{ github.event.inputs.version-type }}
 
       - name: Push commit
         run: git push origin master
@@ -46,8 +46,8 @@ jobs:
     name: Publish ${{ needs.increase-package-version.outputs.pkg-version }} to the NPM registry
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
