@@ -85,13 +85,11 @@ class CpkTransactionManager implements TransactionManager {
         )
 
     const { success, gasLimit } = await this.findGasLimit(ethLibAdapter, txObj, sendOptions)
-    sendOptions.gas = gasLimit
-    const isSingleTx = transactions.length === 1
-
-    const { contract, methodName, params } = txObj
 
     if (!success) {
       console.error('Your transaction will fail!')
+
+      const isSingleTx = transactions.length === 1
       const err = await this.makeTransactionError(
         ethLibAdapter,
         safeExecTxParams,
@@ -101,13 +99,10 @@ class CpkTransactionManager implements TransactionManager {
         isSingleTx
       )
       console.error(err)
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { gas, ...restOptions } = sendOptions
-
-      return contract.send(methodName, params, restOptions)
     }
 
+    sendOptions.gas = gasLimit
+    const { contract, methodName, params } = txObj
     return contract.send(methodName, params, sendOptions)
   }
 
