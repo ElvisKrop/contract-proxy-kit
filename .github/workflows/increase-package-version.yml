@@ -12,9 +12,21 @@ on:
         type: string
         description: "Value can be: patch, minor or major"
 
+  workflow_dispatch:
+    inputs:
+      version-type:
+        type: choice
+        description: What version do you want to increase?
+        required: true
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+
 jobs:
   increase-package-version:
-    name: Increase package version automatically
+    name: Update version to ${{ steps.pkg-version.outputs.current-version }}
     runs-on: ubuntu-latest
     outputs:
       pkg-version: ${{ steps.pkg-version.outputs.current-version }}
@@ -31,7 +43,7 @@ jobs:
       - name: Increase version
         run: |
           cd ./packages/contract-proxy-kit
-          yarn version --${{ inputs.version-type }}
+          yarn version --${{ inputs.version-type }}${{ github.event.inputs.version-type }}
           cd ../..
 
       - name: Push commit

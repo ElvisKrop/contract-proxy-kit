@@ -1,26 +1,14 @@
 name: Publish
-on:
-  workflow_dispatch:
-    inputs:
-      version-type:
-        type: choice
-        description: What version do you want to increase?
-        required: true
-        default: patch
-        options:
-          - patch
-          - minor
-          - major
+on: workflow_dispatch
 
 jobs:
-  increase-package-version:
-    uses: ElvisKrop/contract-proxy-kit/.github/workflows/increase-package-version.yml@master
-    with:
-      version-type: ${{ github.event.inputs.version-type }}
-
+#  increase-package-version:
+#    uses: ElvisKrop/contract-proxy-kit/.github/workflows/increase-package-version.yml@master
+#    with:
+#      version-type: ${{ github.event.inputs.version-type }}
   npm-publish:
-    needs: increase-package-version
-    name: Publish ${{ needs.increase-package-version.outputs.pkg-version }} to the NPM registry
+#    needs: increase-package-version
+    name: Publish to the NPM registry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
