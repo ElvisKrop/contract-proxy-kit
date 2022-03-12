@@ -26,7 +26,7 @@ on:
 
 jobs:
   increase-package-version:
-    name: Update version to ${{ steps.pkg-version.outputs.current-version }}
+    name: ${{ inputs.version-type }}${{ github.event.inputs.version-type }} version
     runs-on: ubuntu-latest
     outputs:
       pkg-version: ${{ steps.pkg-version.outputs.current-version }}

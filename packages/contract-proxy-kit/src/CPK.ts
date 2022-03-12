@@ -143,8 +143,7 @@ class CPK {
       throw new Error('CPK ethLibAdapter uninitialized')
     }
     const codeAtAddress = await this.ethLibAdapter.getCode(address)
-    const isDeployed = codeAtAddress !== '0x'
-    return isDeployed
+    return codeAtAddress !== '0x'
   }
 
   /**
@@ -335,6 +334,8 @@ class CPK {
       return this.#safeAppsSdkConnector.sendTransactions(standardizedTxs, {
         safeTxGas: options?.safeTxGas
       })
+    } else {
+      console.log('###_CPK: safe app: ', this.#safeAppsSdkConnector?.isSafeApp)
     }
 
     const address = await this.address

@@ -102,6 +102,8 @@ class CpkTransactionManager implements TransactionManager {
     }
 
     sendOptions.gas = gasLimit
+    console.log('###_CPK: sendOptions: ', sendOptions)
+
     const { contract, methodName, params } = txObj
     return contract.send(methodName, params, sendOptions)
   }
