@@ -1,4 +1,4 @@
-name: Publish
+name: Publish to the NPM registry
 on: workflow_dispatch
 
 jobs:
@@ -8,7 +8,7 @@ jobs:
 #      version-type: ${{ github.event.inputs.version-type }}
   npm-publish:
 #    needs: increase-package-version
-    name: Publish to the NPM registry
+#    name: Publish to the NPM registry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code

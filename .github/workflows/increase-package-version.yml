@@ -1,4 +1,4 @@
-name: Package version
+name: Increase package version
 
 on:
   workflow_call:
