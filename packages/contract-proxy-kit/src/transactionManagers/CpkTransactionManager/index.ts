@@ -258,6 +258,7 @@ class CpkTransactionManager implements TransactionManager {
         revertMessage = ethLibAdapter.decodeError(revertData)
         errorMessage = `${errorMessage}: ${revertMessage}`
       } catch (e) {
+        console.log(e)
         // empty
       }
     }
