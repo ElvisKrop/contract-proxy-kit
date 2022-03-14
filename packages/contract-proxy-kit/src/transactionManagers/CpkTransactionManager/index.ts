@@ -97,7 +97,8 @@ class CpkTransactionManager implements TransactionManager {
         safeContract.address,
         gasLimit,
         isDeployed,
-        isSingleTx
+        isSingleTx,
+        sendOptions
       )
       console.error(err)
     }
@@ -236,7 +237,8 @@ class CpkTransactionManager implements TransactionManager {
     safeAddress: Address,
     gasLimit: number,
     isDeployed: boolean,
-    isSingleTx: boolean
+    isSingleTx: boolean,
+    { from }: SendOptions
   ): Promise<Error> {
     let errorMessage = `${isDeployed ? '' : 'proxy creation and '}${
       isSingleTx ? 'transaction' : 'batch transaction'
@@ -248,6 +250,25 @@ class CpkTransactionManager implements TransactionManager {
         revertData = await ethLibAdapter.getCallRevertData(
           {
             from: safeAddress,
+            to,
+            value,
+            data,
+            gasLimit
+          },
+          'latest'
+        )
+        revertMessage = ethLibAdapter.decodeError(revertData)
+        errorMessage = `${errorMessage}: ${revertMessage}`
+      } catch (e) {
+        // console.log(e)
+        // empty
+      }
+    } else if (isSingleTx && operation === OperationType.DelegateCall) {
+      try {
+        console.log('###_CPK: owner', from)
+        revertData = await ethLibAdapter.getCallRevertData(
+          {
+            from,
             to,
             value,
             data,
