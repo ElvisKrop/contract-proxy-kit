@@ -84,6 +84,7 @@ class CpkTransactionManager implements TransactionManager {
           proxyFactory
         )
 
+    console.log('###_CPK: txObj: ', txObj)
     const { success, gasLimit } = await this.findGasLimit(ethLibAdapter, txObj, sendOptions)
 
     if (!success) {

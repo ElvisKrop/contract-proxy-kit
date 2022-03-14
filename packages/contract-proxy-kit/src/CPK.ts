@@ -478,6 +478,7 @@ class CPK {
 
   private getSafeExecTxParams(transactions: Transaction[]): StandardTransaction {
     if (transactions.length === 1) {
+      console.log('###_CPK: you have only one transaction')
       return standardizeTransaction(transactions[0])
     }
 
