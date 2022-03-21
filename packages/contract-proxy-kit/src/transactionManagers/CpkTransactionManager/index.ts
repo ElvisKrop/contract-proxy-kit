@@ -181,6 +181,7 @@ class CpkTransactionManager implements TransactionManager {
   ): Promise<{ success: boolean; gasLimit: number }> {
     async function checkOptions(options: NormalizeGas<SendOptions>): Promise<boolean> {
       try {
+        console.log({ proxy: contract.address, methodName, params, options })
         return await contract.call(methodName, params, options)
       } catch (e) {
         return false
